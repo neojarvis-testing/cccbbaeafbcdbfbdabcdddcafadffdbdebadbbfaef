@@ -130,144 +130,144 @@ describe('Registration Form Validation', () => {
 //     global.location.assign = originalAssign;
 // });
 
-// it('Week4_Day2_should_navigate_to_login_page_with_valid_registration_data', () => {
-//   // Mock form inputs with valid registration data
-//   document.getElementById('username').value = 'validUser';
-//   document.getElementById('password').value = 'Password1';
-//   document.getElementById('confirmPassword').value = 'Password1';
-//   document.getElementById('role').value = 'admin';
+it('Week4_Day2_should_navigate_to_login_page_with_valid_registration_data', () => {
+  // Mock form inputs with valid registration data
+  document.getElementById('username').value = 'validUser';
+  document.getElementById('password').value = 'Password1';
+  document.getElementById('confirmPassword').value = 'Password1';
+  document.getElementById('role').value = 'admin';
 
-//   // Mock window.location.assign function
-//   const originalAssign = global.location.assign;
-//   global.location.assign = jasmine.createSpy();
+  // Mock window.location.assign function
+  const originalAssign = global.location.assign;
+  global.location.assign = jasmine.createSpy();
 
-//   // Call the validation function
-//   const result = validateRegistration();
+  // Call the validation function
+  const result = validateRegistration();
 
-//   // Assertions
-//   // expect(result).toBe(false); // Since you're preventing form submission
-//   // expect(global.alert).toHaveBeenCalledWith('Registration successful!'); // Check if alert was called with the correct message
-//   // expect(global.location.assign).toHaveBeenCalledWith('login.html'); // Check if assign was called with the correct URL
+  // Assertions
+  // expect(result).toBe(false); // Since you're preventing form submission
+  // expect(global.alert).toHaveBeenCalledWith('Registration successful!'); // Check if alert was called with the correct message
+  // expect(global.location.assign).toHaveBeenCalledWith('login.html'); // Check if assign was called with the correct URL
 
-//   // Check if the current URL matches the expected URL
-//   expect(location.href).toBe('login.html');
+  // Check if the current URL matches the expected URL
+  expect(location.href).toBe('login.html');
 
-//   // Restore the original function after the test
-//   global.location.assign = originalAssign;
-// });
+  // Restore the original function after the test
+  global.location.assign = originalAssign;
+});
 
-// });
+});
 
-// const { validateLogin } = require('../loginValidation'); // Update the path accordingly
+const { validateLogin } = require('../loginValidation'); // Update the path accordingly
 
-// describe('Login Form Validation', () => {
-//   let dom;
+describe('Login Form Validation', () => {
+  let dom;
 
-//   beforeEach(() => {
-//       dom = new JSDOM(`
-//       <div class="container">
-//       <h1>Login</h1>
-//       <form id="loginForm" onsubmit="return validateLogin();" method="post">
-//           <label for="username">Username:</label>
-//           <input type="text" id="username" name="username" required>
+  beforeEach(() => {
+      dom = new JSDOM(`
+      <div class="container">
+      <h1>Login</h1>
+      <form id="loginForm" onsubmit="return validateLogin();" method="post">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
 
-//           <label for="password">Password:</label>
-//           <input type="password" id="password" name="password" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
 
-//           <input type="submit" value="Login">
-//       </form>
-//   </div>
-//       `);
-//       global.document = dom.window.document;
-//       global.window = dom.window;
-//       global.alert = jasmine.createSpy(); // Mock the alert function
-//       global.location = {
-//           assign: jasmine.createSpy() // Mock the assign function for navigation
-//       };
+          <input type="submit" value="Login">
+      </form>
+  </div>
+      `);
+      global.document = dom.window.document;
+      global.window = dom.window;
+      global.alert = jasmine.createSpy(); // Mock the alert function
+      global.location = {
+          assign: jasmine.createSpy() // Mock the assign function for navigation
+      };
 
-//       // Mock localStorage
-//       global.localStorage = {
-//           getItem: jasmine.createSpy(),
-//           setItem: jasmine.createSpy(),
-//           removeItem: jasmine.createSpy(),
-//           clear: jasmine.createSpy()
-//       };
-//   });
+      // Mock localStorage
+      global.localStorage = {
+          getItem: jasmine.createSpy(),
+          setItem: jasmine.createSpy(),
+          removeItem: jasmine.createSpy(),
+          clear: jasmine.createSpy()
+      };
+  });
 
-//   afterEach(() => {
-//       delete global.document;
-//       delete global.window;
-//       delete global.alert;
-//       delete global.location;
-//       delete global.localStorage;
-//   });
+  afterEach(() => {
+      delete global.document;
+      delete global.window;
+      delete global.alert;
+      delete global.location;
+      delete global.localStorage;
+  });
 
-//   it('Week4_Day1_Valid_Login', () => {
-//       // Mock form inputs
-//       document.getElementById('username').value = 'validUser';
-//       document.getElementById('password').value = 'Password1';
+  it('Week4_Day1_Valid_Login', () => {
+      // Mock form inputs
+      document.getElementById('username').value = 'validUser';
+      document.getElementById('password').value = 'Password1';
 
-//       // Mock localStorage with registered user data
-//       global.localStorage.getItem.and.returnValue(JSON.stringify({
-//           username: 'validUser',
-//           password: 'Password1',
-//           role: 'admin'
-//       }));
+      // Mock localStorage with registered user data
+      global.localStorage.getItem.and.returnValue(JSON.stringify({
+          username: 'validUser',
+          password: 'Password1',
+          role: 'admin'
+      }));
 
-//       // Mock alert function
-//       global.alert.and.stub();
+      // Mock alert function
+      global.alert.and.stub();
 
-//       // Call the validation function
-//       validateLogin();
+      // Call the validation function
+      validateLogin();
 
-//       // Assertions
-//       expect(global.alert).toHaveBeenCalledWith('Login successful! Role: admin');
-//       // expect(global.location.assign).toHaveBeenCalledWith('login.html');
-//   });
-//   it('Week4_Day2_Valid_Login_navigate_to_home_page', () => {
-//     // Mock form inputs
-//     document.getElementById('username').value = 'validUser';
-//     document.getElementById('password').value = 'Password1';
+      // Assertions
+      expect(global.alert).toHaveBeenCalledWith('Login successful! Role: admin');
+      // expect(global.location.assign).toHaveBeenCalledWith('login.html');
+  });
+  it('Week4_Day2_Valid_Login_navigate_to_home_page', () => {
+    // Mock form inputs
+    document.getElementById('username').value = 'validUser';
+    document.getElementById('password').value = 'Password1';
 
-//     // Mock localStorage with registered user data
-//     global.localStorage.getItem.and.returnValue(JSON.stringify({
-//         username: 'validUser',
-//         password: 'Password1',
-//         role: 'admin'
-//     }));
+    // Mock localStorage with registered user data
+    global.localStorage.getItem.and.returnValue(JSON.stringify({
+        username: 'validUser',
+        password: 'Password1',
+        role: 'admin'
+    }));
 
-//     // Mock alert function
-//     global.alert.and.stub();
+    // Mock alert function
+    global.alert.and.stub();
 
-//     // Call the validation function
-//     validateLogin();
+    // Call the validation function
+    validateLogin();
 
-//     // Assertions
-//     // expect(global.alert).toHaveBeenCalledWith('Login successful! Role: admin');
-//     expect(location.href).toBe('home.html');
-// });
+    // Assertions
+    // expect(global.alert).toHaveBeenCalledWith('Login successful! Role: admin');
+    expect(location.href).toBe('home.html');
+});
 
-//   it('Week4_Day2_Invalid_User_Login', () => {
-//         // Mock form inputs for an invalid user
-//         document.getElementById('username').value = 'invalidUser';
-//         document.getElementById('password').value = 'InvalidPassword';
+  it('Week4_Day2_Invalid_User_Login', () => {
+        // Mock form inputs for an invalid user
+        document.getElementById('username').value = 'invalidUser';
+        document.getElementById('password').value = 'InvalidPassword';
 
-//         // Mock localStorage with registered user data (not matching the input)
-//         global.localStorage.getItem.and.returnValue(JSON.stringify({
-//             username: 'validUser',
-//             password: 'Password1',
-//             role: 'admin'
-//         }));
+        // Mock localStorage with registered user data (not matching the input)
+        global.localStorage.getItem.and.returnValue(JSON.stringify({
+            username: 'validUser',
+            password: 'Password1',
+            role: 'admin'
+        }));
 
-//         // Mock alert function
-//         global.alert.and.stub();
+        // Mock alert function
+        global.alert.and.stub();
 
-//         // Call the validation function
-//         validateLogin();
+        // Call the validation function
+        validateLogin();
 
-//         // Assertions
-//         expect(global.alert).toHaveBeenCalledWith('Invalid username or password.');
-//         // expect(global.location.assign).not.toHaveBeenCalled(); // No navigation for invalid login
-//     });
+        // Assertions
+        expect(global.alert).toHaveBeenCalledWith('Invalid username or password.');
+        // expect(global.location.assign).not.toHaveBeenCalled(); // No navigation for invalid login
+    });
 
 });
